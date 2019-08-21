@@ -1,0 +1,177 @@
+
+<script>
+    //functions ife pattern
+//imediately invoke function expression
+//running the funcytion imediately it is invoked
+//value of ife is that it can hold on to a  variable
+//the real value of an IFE is when an IFE can acess value in an object
+
+// (function () {
+//     console.log('in functi');
+// }) ();
+
+
+// let wordpressApp = ( function () {
+//     let wpPluggin = 123;
+//     console.log ('wp plugin that i have built');
+//     return {};
+// }) ();  
+
+// console.log(wordpressApp);
+
+//closures
+
+// let WPapp = ( function(){
+//     let wpPluggin = 123;
+//     let wpPlugginName = function () {
+//         return wpPluggin;
+//     };
+
+//     return {
+//         getWpPluggin : wpPlugginName 
+//     };
+ 
+    //the idea is to have the variable like wpPluggin in scope. We then reference WPapp so that it doesnt only display IIFE but can also call the variables in them.
+
+    //Here, we let wpPlugginName function get the value of wpPluggin  which has the value of 123, we now return the wpPlugginName from an object so that we return the value it to the parent function WPapp/ the objectwill get assigned to app- I think this explains best. Any variable 
+// }) ();
+// console.log(WPapp.getWpPluggin());
+
+
+//the this keyword//
+
+// this key word depends on the context. First of all it will refer to the object class or variable assigned for the object
+//for example
+
+// let o = {
+//     wpPgId : 123 + "is like norwich will stay back" ,
+//     getWpId : function () {
+//         return this.wpPgId;
+//     }
+// }; console.log(o.getWpId());
+
+//call and apply function//
+
+// call and apply function is used to change tyhe context of the "this KEYWORD" 
+
+// let o = {
+//     wpPgId : "my first wordpress pluggin",
+//     getWpId : function () {
+//         return  this.wpPgId;
+//     } 
+// }; //so to cahnge the context of the  "this Keyword stuff", lets implement the "CALL" before we implement apply
+// let newWpId = { wpPgId: 4 + 5 -3 *2 };// and make sure you name your new THIS property with the name of the "previous "property. Previous property in quote adn. Look well to understand 
+// // so to instead of saying console.log(o.getWpId()) --which is the normal way we execute this keyword function, prefix the getWpId with "call".. that is : o.getWpId.call then followed by a parenthesis with newWpId as othe arguement for the call() function keyword; so
+
+
+// console.log( o.getWpId.call(newWpId) );
+
+//APPLY is used primarily to add arguments you want to reassign 
+// let y = {
+//     wpPgId : "my first wordpress pluggin",
+//     getWpId : function (arguement) {
+//         return  arguement + "behold our value: " + this.wpPgId;
+//     } 
+// }; //so to cahnge the context of the  "this Keyword stuff", lets implement the "CALL" before we implement apply
+// let newWpId = { wpPgId: 4 + 5 -3 *2 };// and make sure you name your new THIS property with the name of the "previous "property. Previous property in quote adn. Look well to understand 
+// // so to instead of saying console.log(o.getWpId()) --which is the normal way we execute this keyword function, prefix the getWpId with "call".. that is : o.getWpId.call then followed by a parenthesis with newWpId as othe arguement for the call() function keyword; so
+
+// console.log( y.getWpId.call(newWpId, ['id, '] ) );
+
+/*programming is another powerful skill. A programer is a marvel character like hulk, chidi and mention your self*/
+
+//BIND: use to make a copy of  a reassigned this value/ new this value then still hold it fora new value. Then still change the "this " value
+
+//Using Bind, you copy a function and you can still be able to change the this keyword function. 
+// let o = {
+//     wpPlugn : "plug",
+//     Plug : function () {
+//         return this.wpPlugn;
+//     }
+// }; 
+// let newPlg = {wpPlugn : "new plugn"};
+
+// let newFn = (o.Plug.bind(newPlg));
+
+// console.log(newFn());
+
+//Arrow Functions//
+
+// let fn = () => 123; //123 is the return value. LIKE WHEN YOU SAY    "RETYURN BLAH BLAH;"
+//you can use arrow functions for two arguments in a single line without using parenthesisv without using the "return keyword" Using it with code block you can us 
+
+// console.log(fn());
+// YOU CAN USE Brackets
+// let nb = (Oneargument, blah) => Oneargument + blah + 123;
+// console.log( nb('yahyah', [' id ']));
+//you can use under UNDERSCORE, yet it stiill works
+
+//the this keyword is not contextual with arrow functions
+
+//GIVING PARAMETERS OR ARGUMENTS DEFAULT VALUE//
+/*lets assume that we want to set the price tag to $, if ait be changed, say to naira, that naira works but if it be changed to nothing, we assigned a defualt parameter(i.e dollar sign ) by default */
+// let trackPrice = (price, currency='$') => {
+//     console.log('The price is ' + currency + price);
+// }
+// //lets customise that of the user input ; say user uses
+
+// let user = "N"; // wow! js is powerful! iJust created an e-commerce system with my instinct
+
+// if (user) {
+//     console.log(trackPrice(500, user));
+// } else {
+//     console.log(trackPrice(500));
+// }
+
+// ##### NEW MODULE ###//
+
+            /*constructor function*/
+//Note: function was used as classes in ojects for javascript previuously
+
+// function WPplug(er){
+//     this.uploadNo = er;
+// }
+// let uploadNum = new WPplug(123);
+
+// console.log(uploadNum.uploadNo);
+
+// Note that something like uploadNum() without using the new keyword or even uising the new keyword without adding a dot(like function.variable) is a wrong way of caling constructor function. It is like your're calling a noraml function..Once you add a The NEW keyword, the fgunction immediately becomes an object
+
+//usign the constructor function, the THIS keyword is very important to access the context of the expression
+
+//jusst always use THIS to refer to the property or object you want to use that is inside a constructor function
+
+// function wpPlugin (para){
+//     //lets set a property ofcourse usign THIS!
+//     this.wpPlugVar = para;
+//     this.themeUse = () => {
+//         console.log('Plugin welcome note: ' +  this.wpPlugVar);
+//     };
+// }
+
+// let implementPlug = new wpPlugin("Hello user!");
+
+//Note that pointing or refering to property, you must console.log it or you must echo it like ("implementPlug.wpPlugVar;") but if it is a method like (   implementPlug.themeUse() ), it automatically displays
+
+    // implementPlug.themeUse();
+
+
+/* prototype */
+
+//definition : used to avoid multiple replication of functions because it saves memory
+
+function wpPlugin (){
+    this.wpPlugV2 = "v4.0";
+}
+
+//maakigna prototype of our constructor function for a method we wanna call..here ----->
+
+wpPlugin.prototype.fun = function() {
+    console.log("Y'ello, your plugin has been updated. You're using the latest version of our app: " + this.wpPlugV2 );
+};
+
+//lets instantiate our Constructor function
+let updatedVersion = new wpPlugin;
+
+updatedVersion.fun();
+</script>
