@@ -160,18 +160,170 @@
 
 //definition : used to avoid multiple replication of functions because it saves memory
 
-function wpPlugin (){
-    this.wpPlugV2 = "v4.0";
-}
+// function wpPlugin (){
+//     this.wpPlugV2 = "v4.0";
+// }
 
-//maakigna prototype of our constructor function for a method we wanna call..here ----->
+// //maakigna prototype of our constructor function for a method we wanna call..here ----->
 
-wpPlugin.prototype.fun = function() {
-    console.log("Y'ello, your plugin has been updated. You're using the latest version of our app: " + this.wpPlugV2 );
+// wpPlugin.prototype.fun = function() {
+//     console.log("Y'ello, your plugin has been updated. You're using the latest version of our app: " + this.wpPlugV2 );
+// };
+
+// //lets instantiate our Constructor function
+// let updatedVersion = new wpPlugin;
+
+// updatedVersion.fun();
+
+// another use of prototype is used to expand objects and give new functionality to all instances of an object
+
+//String in caps is a javascript object. Just as if you are accessing a new object
+
+// String.prototype.hello = function () {
+//     return this.toString() + '--- hello frr';
+    // use your imagination! -- toString is another method in an imageniary String constructor function
+// };
+//this is basically whatr is happening here:
+/* the this.String() is a method on its own that is returned to the String prototype to have the value of the    */
+// console.log("how are you doing".hello())
+//wow ! did you notice that the constructor function was not instantiated? 
+//why? //it is because, the using a prototype we can imagine that it has been instantiatted by default so their is no need to instantiate it.. I understand! Do you?
+//instead of saying blah = new originalClass;
+// 
+
+//JSON javascript object notation
+//purspose of JSON : It is to transmit or send js objects over the web. It will be sendig or recieving js object over the web such as a restful API
+
+//So lets send some objects as JSON over the web 
+//   let wpPlugin = {
+//       maxChat :  90,
+//       memMax : 300,
+//       damian : "comment"
+//   };
+//   //to JSON
+//   console.log(JSON.stringify(wpPlugin));
+//   //lets convert it to the json file to an ordinary object
+//    let JsonWeb = 
+//        `
+      
+//        {
+        
+//         "maxChat":90,
+//         "memMax":300,
+//         "damian":"comment"
+       
+//        }
+//     `;
+
+//     //here we convert it to JSon
+//     let nejson = JSON.parse(JsonWeb);
+//     console.log(nejson);
+
+
+// ADVANCED ARRAY
+// using forEch  to officially loop through it
+// let roomMates = [
+//     {daimian: 2, dept: 5},
+//     {jojo:12, dept: 67},
+//     {ogaOdi: 4, dept: 609600906}
+// ];
+
+//  roomMates.forEach( myRoomies => console.log(myRoomies));
+//  // getting the index or position of arrays you zdd another parameter after the first arguement that follows the method--forEach
+//  roomMates.forEach ((myRoomies, thenumber ) => console.log(myRoomies, thenumber));
+
+//  //filter an array and create a new array
+// //we want to filter damian my boy
+
+// let damianLevel = roomMates.filter(
+//     newArry => newArry.daimian ===2
+// );
+// console.log(damianLevel);
+
+// //testing the entire array method-->>> You use EVERY
+// let oga = roomMates.every(myroomies => myroomies.dept > 0);
+// //you must make sure that the values or obj properties you want to access are the same for the array method "every". Because you are saying, that for EVERY array objects properties. 
+// console.log(oga);
+
+// // finding the first element that matches once we get the first element that matches the code stop executing
+
+// let finder = roomMates.find( watWewan25nd => watWewan25nd.dept > 6);
+
+// console.log(finder);
+
+//New module
+
+//  classes and modules //
+
+//a better way of making a class compared to using constructor function
+
+//a constructor is a function that gets executed when a new instance of an object gets created even without poining to it
+
+// class RM {
+//     constructor (Unames) {
+//         this.names = Unames;
+//     };
+
+// };
+// //so immediately i creatre a new instance , the code executes even if the i did not point to the particular property.
+
+// let thierNames = new RM ("jsut call : kenComputer Science");
+// //A constructor in a class is simply that the class that will be instatntiated will(i will want to to say WILL instead of MAY) or can be passed arguements to it as it is about to be instantiated. Just the main point is that, usign  CONSTRUCTOR IN A CLSS, it simply means that once the page loads,
+// let blah = RM.names = "the food is burning";
+// console.log(blah); 
+
+
+//MEthod
+
+class names {
+    constructor (anything) {
+        this.thatThing = anything;
+    }
+    aFunction() {
+        return `this is that: ${this.thatThing}`;
+    }
 };
 
-//lets instantiate our Constructor function
-let updatedVersion = new wpPlugin;
+let something = new names(123);
+console.log(something.aFunction());
 
-updatedVersion.fun();
+//inherintance YOu can use it to duplicate code...Extending to other class
+
+
+//How? 
+
+class MainClass {
+    constructor () {
+        this.pointee = "what that has been pointed";
+    }
+//is like a constructor you can call methods and functions in it without 
+    aMethod() {
+        return `Here: ${this.pointee}`;
+    }
+}
+class subClass extends MainClass {
+    
+        ndMethod () {
+            return `this is our second method` + super.aMethod();
+        }
+
+}
+
+let litle =  new subClass();
+console.log(litle.pointee);
+console.log(litle.ndMethod());
+
+//you can use "super()" to tap into the resouces of our main or supper class. You can even use it to access the constructor or the method
+
+// organising classes with modules (chunks of code)
+//using the keyword of : EXPORT
+
+//if you have your to prefix EXPORT before the module (it could be class, variables, functions, etc) you want to export then in the page you want to import the file you should do : import { the class or variable name or etc name}from './location/folder/file.js'(the thew file location)
+
+//PROGRAMMING THE BOM and DOM 
+
+//window object: global object in javascript and we can access the window object fom anywhere
+
+year =1956;
+console.log(innerWidth);// window is the global object
 </script>
